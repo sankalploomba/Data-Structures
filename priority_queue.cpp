@@ -18,7 +18,7 @@ class Priority_Queue
 
 			void display()
 			{
-				node* t=new node;
+				node* t;
 				t=(front);
 
 				if(t==NULL)
@@ -40,7 +40,6 @@ class Priority_Queue
 			{
 				if(first)
 				{
-					front=new node;
 					rear=new node;
 					
 					cout<<"Enter value and it's priority (between the range 0-5) in queue: ";
@@ -89,7 +88,7 @@ class Priority_Queue
 						}
 						else
 						{
-							node* t= new node;
+							node* t;
 							t=front;
 							
 							while(t!=NULL)
@@ -120,6 +119,7 @@ class Priority_Queue
 				}
 				else
 				{
+					cout<<"Deleting from else"<<endl;
 					node* temp;
 					int x=front->value;
 					temp=front->next;
