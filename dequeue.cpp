@@ -14,7 +14,7 @@ bool last_del=false, first_del=false;
 
 void display()
 {
-    node* t=new node;
+    node* t;
     t=(front);
 
     if(t==NULL)
@@ -36,8 +36,7 @@ void add()
 {
     if(front==NULL)
     {
-		cout<<"add if."<<endl;
-		rear= new node;
+	rear= new node;
 
         cout<<"Enter value in queue: ";
         cin>>(rear->value);
@@ -45,13 +44,11 @@ void add()
         rear->next=NULL;
         rear->prev=NULL;
         front=rear;
-
     }
 
     else if(front!=NULL)
     {
-		cout<<"add else."<<endl;
-        node* p= new node;
+	node* p= new node;
 
         if(p==NULL)
         {
@@ -77,8 +74,7 @@ void add_front()
 {
     if(rear==NULL)
     {
-        cout<<"add_front if."<<endl;
-		front=new node;
+        front=new node;
 
         cout<<"Enter value in queue: ";
         cin>>(front->value);
@@ -86,12 +82,10 @@ void add_front()
         front->next=NULL;
         front->prev=NULL;
         rear=front;
-
     }
 
     else if(rear!=NULL)
     {
-        cout<<"add_front else."<<endl;
         node* p= new node;
 
         if(p==NULL)
@@ -117,34 +111,32 @@ void add_front()
 int del()
 {
 	if(last_del==true || front==NULL)
-    {
-        last_del=false;
-        front=NULL;
-        rear=NULL;
-        return -1;
-    }
+    	{
+        	last_del=false;
+        	front=NULL;
+        	rear=NULL;
+        	return -1;
+    	}
 
 	if(front->prev==NULL && front->next==NULL)
 	{
-	    cout<<"delete from if."<<endl;
-		int x=front->value;
+	    	int x=front->value;
 		delete front;
 		last_del=true;
 		rear=NULL;
 		front=NULL;
 		return x;
 	}
-    else
-    {
-        cout<<"delete from else."<<endl;
-        node* temp=new node;
-        int x=front->value;
-        temp=front->next;
-        delete front;
-        front=temp;
-        front->prev=NULL;
-        return x;
-    }
+    	else
+    	{
+        	node* temp=new node;
+		int x=front->value;
+		temp=front->next;
+		delete front;
+		front=temp;
+		front->prev=NULL;
+		return x;
+    	}
 }
 
 int del_rear()
@@ -159,81 +151,77 @@ int del_rear()
 
 	if(rear->prev==NULL && rear->next==NULL)
 	{
-	    cout<<"delete from if."<<endl;
-		int x=rear->value;
+	    	int x=rear->value;
 		delete rear;
 		first_del=true;
 		front=NULL;
 		rear=NULL;
 		return x;
 	}
-    else
-    {
-        cout<<"delete from else."<<endl;
-        node* temp=new node;
-        int x=rear->value;
-        temp=rear->prev;
-        delete rear;
-        rear=temp;
-        rear->next=NULL;
-        return x;
-    }
+    	else
+	{
+		cout<<"delete from else."<<endl;
+		node* temp=new node;
+		int x=rear->value;
+		temp=rear->prev;
+		delete rear;
+		rear=temp;
+		rear->next=NULL;
+		return x;
+	}
 }
 
 int main()
 {
-    char ch;
+	char ch;
+	
+    	do
+    	{
+		int choice;
+		cout<<endl<<endl<<"-----------------------------------------------------------------------------"<<endl;
+		cout<<"1. Add "<<endl<<"2. Add @ front "<<endl<<"3. Delete "<<endl<<"4. Delete @ rear "<<endl<<"5. Display "<<endl;
+		cout<<endl<<"Enter choice: ";
+		cin>>choice;
 
-    front=NULL;
-    rear=NULL;
+		if(choice==1)
+		    add();
 
-    do
-    {
-        int choice;
-        cout<<endl<<endl<<"-----------------------------------------------------------------------------"<<endl;
-        cout<<"1. Add "<<endl<<"2. Add @ front "<<endl<<"3. Delete "<<endl<<"4. Delete @ rear "<<endl<<"5. Display "<<endl;
-        cout<<endl<<"Enter choice: ";
-        cin>>choice;
+		else if(choice==2)
+		    add_front();
 
-        if(choice==1)
-            add();
+		else if(choice==3)
+		{
+		    int x;
+		    x=del();
 
-        else if(choice==2)
-            add_front();
+		    if(x==-1)
+			cout<<"Now, Queue is empty. "<<endl;
 
-        else if(choice==3)
-        {
-            int x;
-            x=del();
+		    else
+			cout<<"Deleted element is "<<x;
+		}
 
-            if(x==-1)
-                cout<<"Now, Queue is empty. "<<endl;
+		else if(choice==4)
+		{
+		    int x;
+		    x=del_rear();
 
-            else
-                cout<<"Deleted element is "<<x;
-        }
+		    if(x==-1)
+			cout<<"Queue is empty. "<<endl;
 
-        else if(choice==4)
-        {
-            int x;
-            x=del_rear();
+		    else
+			cout<<"Deleted element is "<<x;
+		}
 
-            if(x==-1)
-                cout<<"Queue is empty. "<<endl;
+		else if(choice==5)
+		    display();
 
-            else
-                cout<<"Deleted element is "<<x;
-        }
-
-        else if(choice==5)
-            display();
-
-        else
-            cout<<"Invalid choice."<<endl;
+		else
+		    cout<<"Invalid choice."<<endl;
 
 
-        cout<<endl<<endl<<"Do you want to continue? ";
-        cin>>ch;
-    }
-    while(ch=='y'||ch=='Y');
+		cout<<endl<<endl<<"Do you want to continue? ";
+		cin>>ch;
+    	}
+    	while(ch=='y'||ch=='Y');
 }
