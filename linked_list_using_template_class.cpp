@@ -7,13 +7,13 @@ template<class T>
 class node
 {
 	public:	T val;
-			node<T> *next;
+		node<T> *next;
 };
 
 template<class T>
 class List
 {
-	public:	node<int> *head=new node<int>;
+	public:		node<int> *head=new node<int>;
 			node<int> *t=new node<int>;	
 			bool first_flag=true;
 			int size=0;
