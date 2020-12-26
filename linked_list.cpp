@@ -1,6 +1,6 @@
 //LINKED LIST USING TEMPLATES
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 using namespace std;
 
 template<class T>
@@ -158,6 +158,7 @@ class List
 				display();
 			}	
 };
+
 int main()
 {
 	List<int> l1,l2;
@@ -166,55 +167,58 @@ int main()
 	do
 	{
 		int choice;
-        cout<<endl<<endl<<"-----------------------------------------------------------------------------"<<endl;
-        cout<<"1. Deletion "<<endl<<"2. Insertion "<<endl<<"3. Linear Search "<<endl<<"4. Binary Search "<<endl<<"5. Display "<<endl<<"6. Reverse "<<endl<<"7. Contatenate "<<endl;
-        cout<<endl<<"Enter choice: ";
-        cin>>choice;
+		cout<<endl<<endl<<"-----------------------------------------------------------------------------"<<endl;
+		cout<<"1. Deletion "<<endl<<"2. Insertion "<<endl<<"3. Linear Search "<<endl<<"4. Binary Search "<<endl<<"5. Display "<<endl<<"6. Reverse "<<endl<<"7. Contatenate "<<endl;
+		cout<<endl<<"Enter choice: ";
+		cin>>choice;
 
-        if(choice==1)
-        {
+		if(choice==1)
+		{
 			int key;
 			cout<<"Enter the key: ";
 			cin>>key;
-			
-            l1.del(key);
+
+		   	l1.del(key);
 		}
-        else if(choice==2)
-        {
-            l1.ins();
-            l2.ins();
+		else if(choice==2)
+		{
+	   		l1.ins();
+			l2.ins();
 		}
-        else if(choice==3)
-        {
+		else if(choice==3)
+		{
 			int key;
 			cout<<"Enter the key: ";
 			cin>>key;
-			
-            l1.l_search(key);
+
+			l1.l_search(key);
 		}
-        else if(choice==4)
-        {
+		else if(choice==4)
+		{
 			int key;
 			cout<<"Enter the key: ";
 			cin>>key;
-			
-            l1.b_search(key);
+
+			l1.b_search(key);
 		}
-        else if(choice==5)
-            l1.display();
-		
+		else if(choice==5)
+			l1.display();
+
 		else if(choice==6)
-            l1.rev();
-		
+			l1.rev();
+
 		else if(choice==7)
-            l1+l2;
+			l1+l2;
 
-        else
-            cout<<"Invalid choice."<<endl;
+		else
+		    cout<<"Invalid choice."<<endl;
 
 
-      cout<<endl<<endl<<"Do you want to continue? ";
-      cin>>ch;
+	      cout<<endl<<endl<<"Do you want to continue? ";
+	      cin>>ch;
     }
     while(ch=='y'||ch=='Y');
+
+	
+return 0;
 }
